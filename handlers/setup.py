@@ -33,8 +33,6 @@ async def get_categories(call: CallbackQuery):
     text = ''
     if 'movies' in categories:
         text += 'Фильмы\n'
-    if 'celebrities' in categories:
-        text += 'Знаменитости\n'
     if 'general' in categories:
         text += 'Общее\n'
     await call.answer(text=text, show_alert=True)

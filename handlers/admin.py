@@ -20,7 +20,7 @@ async def edit_category(call: CallbackQuery, category):
             await call.answer(text='Категория добавлена')
         g.edit_chat_category(chat_id=chat_id, category=category, action=action)
         return
-    await call.answer(text='Только администаторы могут менять категории', show_alert=true)
+    await call.answer(text='Только администаторы могут менять категории', show_alert=True)
 
 @dp.message_handler(AdminFilter(), commands=['categories'])
 async def set_categories(message: Message):
@@ -45,10 +45,6 @@ async def stop_game(message: Message):
 @dp.callback_query_handler(text='movies')
 async def movies_category(call: CallbackQuery):
     await edit_category(call=call, category='movies')
-
-@dp.callback_query_handler(text='celebrities')
-async def movies_category(call: CallbackQuery):
-    await edit_category(call=call, category='celebrities')
 
 @dp.callback_query_handler(text='general')
 async def general_category(call: CallbackQuery):

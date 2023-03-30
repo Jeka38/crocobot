@@ -9,7 +9,6 @@ class Game:
         self.cursor = self.connection.cursor()
         self.create_tables()
         self.words_file = 'categories/words.txt'
-        self.celebrities_file = 'categories/celebrities.txt'
         self.movies_file = 'categories/movies.txt'
 
     def create_tables(self):
@@ -23,7 +22,7 @@ class Game:
                     CREATE TABLE IF NOT EXISTS chats(
                         id INTEGER NOT NULL UNIQUE PRIMARY KEY,
                         name TEXT NOT NULL,
-                        categories TEXT DEFAULT "movies celebrities general",
+                        categories TEXT DEFAULT "movies general",
                         speaker INTEGER,
                         correct_word TEXT,
                         in_play INTEGER NOT NULL DEFAULT 0,
@@ -114,8 +113,6 @@ class Game:
     def set_correct_word(self, chat_id):
         WORDS = []
         categories = self.get_chat_categories(chat_id=chat_id)
-        if 'celebrities' in categories:
-            WORDS += open(self.celebrities_file).read().splitlines()
         if 'movies' in categories:
             WORDS += open(self.movies_file).read().splitlines()
         if 'general' in categories:
