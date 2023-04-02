@@ -2,7 +2,7 @@ import logging
 from aiogram.dispatcher.filters.builtin import AdminFilter
 from aiogram.types import CallbackQuery, Message
 from keyboards.inline.game import admin_categories_keyboard
-from misc import dp, g
+from create_bot import dp, g
 
 
 async def edit_category(call: CallbackQuery, category):

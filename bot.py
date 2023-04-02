@@ -1,7 +1,7 @@
 import handlers
 import logging
 from aiogram import executor
-from misc import dp
+from create_bot import dp
 
 
 if __name__ == '__main__':

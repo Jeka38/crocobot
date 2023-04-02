@@ -1,6 +1,6 @@
 import logging
 from aiogram.types import ChatType, Message
-from misc import bot, dp, g
+from create_bot import bot, dp, g
 
 
 @dp.message_handler(ChatType.is_private)

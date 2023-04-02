@@ -1,5 +1,5 @@
 from aiogram.types import Message
-from misc import dp, g
+from create_bot import dp, g
 
 
 @dp.message_handler(commands=['score'])

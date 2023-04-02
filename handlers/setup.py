@@ -1,7 +1,7 @@
 import logging
 from aiogram.types import CallbackQuery, Message, ChatMember
 from keyboards.inline.game import categories_keyboard, words_keyboard
-from misc import dp, g
+from create_bot import dp, g
 
 
 async def setup_game(message: Message):
