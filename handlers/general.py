@@ -18,7 +18,7 @@ async def start_bot(message: Message):
 
 @dp.message_handler(lambda message: message.is_command() and not g.chat_exists(message.chat.id))
 async def not_started(message: Message):
-    await message.answer(text='Начните исопльзование бота с команды /start')
+    await message.answer(text='Начните использование бота с команды /start')
 
 
 @dp.message_handler(commands=['help'])
