@@ -11,23 +11,3 @@ words_keyboard = InlineKeyboardMarkup(
             ]
         ]
 )
-
-admin_categories_keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(text='Фильмы', callback_data='movies'),
-                InlineKeyboardButton(text='Общее', callback_data='general')
-            ],
-            [
-                InlineKeyboardButton(text='Выбранные категории', callback_data='list')
-            ]
-        ]
-)
-
-categories_keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(text='Выбранные категории', callback_data='list')
-            ]
-        ]
-)

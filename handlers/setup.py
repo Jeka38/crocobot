@@ -1,6 +1,6 @@
 import logging
-from aiogram.types import CallbackQuery, Message, ChatMember
-from keyboards.inline.game import categories_keyboard, words_keyboard
+from aiogram.types import Message
+from keyboards.inline.game import words_keyboard
 from create_bot import dp, g
 
 
@@ -11,28 +11,18 @@ async def setup_game(message: Message):
         logging.info(f'Chat with id = {chat_id} added to database')
     if g.in_play(chat_id=chat_id):
         await message.answer(
-                text=f'Игра уже в процессе!\n{g.get_speaker_name(chat_id)} - объясняющий',
-                reply_markup=words_keyboard,
-                disable_notification=True
+            text=f'Игра уже в процессе!\n{g.get_speaker_name(chat_id)} - объясняющий',
+            reply_markup=words_keyboard,
+            disable_notification=True
         )
         return
     await set_categories(message=message)
 
+
+#
 @dp.message_handler(commands=['categories'])
 async def set_categories(message: Message):
     await message.answer(
-            text='Изменять категории могут администраторы.'
-                '\nИспользуйте /play чтобы запустить игру с установленными категориям',
-            reply_markup=categories_keyboard,
-            disable_notification=True
+        text='Используйте /play чтобы запустить игру.',
+        disable_notification=True
     )
-
-@dp.callback_query_handler(text='list')
-async def get_categories(call: CallbackQuery):
-    categories = g.get_chat_categories(chat_id=call.message.chat.id)
-    text = ''
-    if 'movies' in categories:
-        text += 'Фильмы\n'
-    if 'general' in categories:
-        text += 'Общее\n'
-    await call.answer(text=text, show_alert=True)

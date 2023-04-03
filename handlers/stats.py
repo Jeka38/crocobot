@@ -7,9 +7,10 @@ async def get_score(message: Message):
     player_id = message.from_user.id
     score = g.get_score(chat_id=message.chat.id, player_id=player_id)
     await message.answer(
-            text=f'{g.get_player_name(player_id)}'
-            f'\nОчков в этом чате: {score}'
+        text=f'{g.get_player_name(player_id)}'
+             f'\nОчков в этом чате: {score}'
     )
+
 
 @dp.message_handler(commands=['scoretable'])
 async def get_score_table(message: Message):
