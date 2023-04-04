@@ -6,7 +6,7 @@ from create_bot import dp, g
 @dp.message_handler(AdminFilter(), commands=['categories'])
 async def set_categories(message: Message):
     await message.answer(
-        text='Выберите категории, после чего используйте /play для запуска игры',
+        text='Используйте /play для запуска игры',
         disable_notification=True
     )
 
@@ -19,6 +19,6 @@ async def set_categories(message: Message):
 async def stop_game(message: Message):
     g.change_state(chat_id=message.chat.id, state=0)
     await message.answer(
-        text='Игра остановлена администратором',
+        text='Игра остановлена',
         disable_notification=True
     )
