@@ -13,7 +13,6 @@ async def set_categories(message: Message):
 
 @dp.message_handler(
     lambda message: g.in_play(chat_id=message.chat.id),
-    AdminFilter(),
     commands=['stop']
 )
 async def stop_game(message: Message):
