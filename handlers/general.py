@@ -1,5 +1,5 @@
 from aiogram.types import ChatType, Message
-from create_bot import dp, g
+from create_bot import dp, datebase
 
 
 @dp.message_handler(ChatType.is_private)
@@ -16,7 +16,7 @@ async def start_bot(message: Message):
     await setup_game(message=message)
 
 
-@dp.message_handler(lambda message: message.is_command() and not g.chat_exists(message.chat.id))
+@dp.message_handler(lambda message: message.is_command() and not datebase.chat_exists(message.chat.id))
 async def not_started(message: Message):
     await message.answer(text='Начните использование бота с команды /start')
 
